@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Angular JS ‘ng-model’ directive in Vanilla JS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <style type="text/css">
+            .card-body{ min-height:124px; }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="row" style="margin-top:50px;">
+                <div class="col-xs-12 col-sm">
+                    <div class="card bg-light">
+                        <div class="card-body">
+                            <h5 class="card-title">Type in the input and see the magic!</h5>
+                            <div class="form-group" style="margin:0;">
+                                <input type="text" id="magicText" name="magicText" class="form-control" placeholder="It's magic you know. Never believe it's not so">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm">
+                    <div class="card bg-light border-info">
+                        <div class="card-body text-info">
+                            <h5 class="card-title">where the magic happens!</h5>
+                            <p class="card-text" id="outPut"></p>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script type="text/javascript">
+            var output = document.getElementById('outPut');
+            var input = document.getElementById('magicText');
+            var text1 = "Some quick example text to build on the card title and make up the bulk of the card's content.";
+            var makethemagic = function() {
+                text = input.value || text1;
+                if( output.innerHTML !== text ){
+                    output.innerHTML = text;
+                }
+            }                    
+            makethemagic();
+
+            //works but i the cost is too much, in my opnion.
+            // setInterval(makethemagic, 100);
+
+
+            //this works but need all 3 events do make it happen real time
+            //even so i think that is less agressive them using time interval
+            input.addEventListener("keydown", makethemagic);
+            input.addEventListener("keyup", makethemagic);
+            input.addEventListener("keypress", makethemagic);
+
+
+    </script>
+
+</html>
